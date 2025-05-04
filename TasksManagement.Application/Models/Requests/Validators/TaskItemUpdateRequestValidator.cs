@@ -1,8 +1,6 @@
 ﻿using FluentValidation;
-using TasksManagement.Application.Models.Requests;
-using TasksManagement.Domain.Enums;
 
-namespace TasksManagement.Application.Validators;
+namespace TasksManagement.Application.Models.Requests.Validators;
 
 public class TaskItemUpdateRequestValidator : AbstractValidator<TaskItemUpdateRequest>
 {

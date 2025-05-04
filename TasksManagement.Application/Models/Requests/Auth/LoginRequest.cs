@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using TasksManagement.Application.Validators;
+﻿using TasksManagement.Application.Models.Requests.Validators;
 
 namespace TasksManagement.Application.Models.Requests.Auth;
 
@@ -8,8 +7,12 @@ public record LoginRequest(
     string Password
 )
 {
-    public ValidationResult Validate()
+    public Result Validate()
     {
-        return new LoginRequestValidator().Validate(this);
+        var validationResult = new LoginRequestValidator().Validate(this);
+        if (validationResult is { IsValid: true })
+            return Result.Success();
+
+        return Result.Failure(string.Join(", ", validationResult.Errors));
     }
 }

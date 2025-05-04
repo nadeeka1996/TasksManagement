@@ -34,7 +34,7 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     public async Task<IActionResult> Create(TaskItemCreateRequest request)
     {
         var modelState = request.Validate();
-        if (!modelState.IsValid)
+        if (!modelState.IsSuccess)
             return BadRequest(modelState);
 
         var result = await _service.CreateAsync(request);
@@ -48,7 +48,7 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     public async Task<IActionResult> Update(Guid id, TaskItemUpdateRequest request)
     {
         var modelState = request.Validate();
-        if (!modelState.IsValid)
+        if (!modelState.IsSuccess)
             return BadRequest(modelState);
 
         var result = await _service.UpdateAsync(id, request);

@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
-using TasksManagement.Application.Models.Requests;
 
-namespace TasksManagement.Application.Validators;
+namespace TasksManagement.Application.Models.Requests.Validators;
 public class TaskItemCreateRequestValidator : AbstractValidator<TaskItemCreateRequest>
 {
     public TaskItemCreateRequestValidator()

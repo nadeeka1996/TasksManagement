@@ -47,9 +47,6 @@ internal sealed class TaskItemService(
         var taskItem = TaskItem.Create(request.Title, request.Description, request.Status, _currentUser.Id);
         await _unitOfWork.TaskItemRepository.AddAsync(taskItem);
 
-        var history = TaskItemHistory.Create(taskItem.Id, taskItem, taskItem.Title, taskItem.Description, taskItem.Status, _currentUser.Id);
-        await _unitOfWork.TaskItemHistoryRepository.AddAsync(history);
-
         await _unitOfWork.SaveChangesAsync();
         return Result<Guid>.Success(taskItem.Id);
     }

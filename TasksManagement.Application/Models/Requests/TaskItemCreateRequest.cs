@@ -1,6 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using TasksManagement.Application.Models.Requests.Validators;
 using TasksManagement.Domain.Enums;
-using TasksManagement.Application.Validators;
 
 namespace TasksManagement.Application.Models.Requests;
 
@@ -10,10 +9,12 @@ public record TaskItemCreateRequest(
     TaskItemStatus Status
 )
 {
-    public ValidationResult Validate()
-    {
-        return new TaskItemCreateRequestValidator().Validate(this);
+    public Result Validate()
+    {       
+        var validationResult = new TaskItemCreateRequestValidator().Validate(this);
+        if (validationResult is { IsValid:true}) 
+            return Result.Success();
+
+        return Result.Failure(string.Join(", ", validationResult.Errors));
     }
 }
-
-
