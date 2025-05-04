@@ -79,7 +79,6 @@ export class TaskListComponent implements OnInit {
   fetchTasks() {
     this.taskService.getTasks().subscribe({
       next: (response) => {
-        debugger;
         this.tasks = response.value;
         this.filteredTasks.data = this.tasks;
         this.filteredTasks.sort = this.sort;
@@ -135,7 +134,6 @@ export class TaskListComponent implements OnInit {
   }
 
   toggle(task: TaskItem) {
-    debugger
     const newStatus =
       task.status === TaskItemStatus.Completed
         ? TaskItemStatus.Pending
