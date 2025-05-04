@@ -1,5 +1,5 @@
 -- Insert a sample user with password hash and salt
--- craeted user (username = user1@gmail.com / password = 123456)
+-- craeted user (username = john.doe@example.com / password = 123456)
 DECLARE @UserId UNIQUEIDENTIFIER = NEWID();
 
 INSERT INTO [Users] ([Id], [Name], [Email], [PasswordHash], [PasswordSalt])
